@@ -18,4 +18,52 @@
  		WHERE
  			`id` = #{id}
  	</select>
+ 	
+ 	<!-- resultType은 select에만 있다..! -->
+ 	<insert id="insertReview" parameterType="com.example.lesson03.model.Review">
+ 		INSERT INTO `new_review`
+ 		(
+ 			`storeId`
+ 			,`menu`
+ 			,`userName`
+ 			,`point`
+ 			,`review`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{storeId}
+ 			, #{menu}
+ 			, #{userName}
+ 			, #{point}
+ 			, #{review}
+ 			, NOW()
+ 			, NOW()
+ 		)
+ 	</insert>
+ 	
+ 	<!-- @Param 어노테이션을 사용해서 parameterType은 map이다 -->
+ 	<insert id="insertReviewAsField" parameterType="map">
+ 		INSERT INTO `new_review`
+ 		(
+ 			`storeId`
+ 			,`menu`
+ 			,`userName`
+ 			,`point`
+ 			,`review`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{storeId}
+ 			, #{menu}
+ 			, #{userName}
+ 			, #{point}
+ 			, #{review}
+ 			, NOW()
+ 			, NOW()
+ 		)
+ 	</insert>
  </mapper>
